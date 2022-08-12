@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InspeccionController;
 use App\Http\Controllers\PropuestaController;
+use App\Mail\InspeccionRealizada;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +20,17 @@ use App\Http\Controllers\PropuestaController;
 */
 
 Route::get('/', function () {
+   
     return view('welcome');
 });
 
+
+/*Route::get('/email/', function () {
+
+    Mail::to('andresrom@gmail.com')->send(new InspeccionRealizada());
+    
+    return new InspeccionRealizada();
+});*/
 
 
 Auth::routes();

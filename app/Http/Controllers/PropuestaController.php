@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Propuesta;
 use App\Models\Tomador;
 use App\Models\Inspeccion;
+use App\Models\Foto;
 use Illuminate\Http\Request;
 
 use App\Notifications\RealizarInspeccion;
@@ -71,6 +72,15 @@ class PropuestaController extends Controller
 
 
         return redirect('/home');        
+    }
+
+    public function fotosCount(Propuesta $propuesta)
+    {
+        $inspeccion = Inspeccion::where('propuesta_id', $propuesta->id)->firstOrFail();        
+        
+        $p= Foto::where('inspeccion_id', $inspeccion->id)->count();
+        
+        return $p;
     }
 
        

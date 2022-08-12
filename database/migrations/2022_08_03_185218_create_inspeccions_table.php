@@ -17,6 +17,7 @@ class CreateInspeccionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('propuesta_id');
             $table->integer('enviados_count')->default(0);
+            $table->integer('enviados_cia_count')->default(0);
             $table->timestamps();
 
             $table->index('propuesta_id');

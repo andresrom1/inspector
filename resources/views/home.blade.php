@@ -62,19 +62,24 @@
                                     
                                     <div class="d-flex justify-content-center">        
                                         <mail-tomador class="pe-1" propuesta-id="{{ $propuesta->id }}" enviados="{{ $propuesta->inspeccion->enviados_count }}"></mail-tomador>
-                                        <mail-cia class="pe-1" propuesta-id="{{ $propuesta->id }}" enviados="{{ $propuesta->inspeccion->enviados_count }}"></mail-cia>
+                                        <mail-cia class="pe-1" propuesta-id="{{ $propuesta->id }}" enviados="{{ $propuesta->inspeccion->enviados_cia_count }}"></mail-cia>
             
                                     </div>
                                 </td>
                                 <td>
-                                    <a class="btn btn-outline-info btn-sm" href="/inspecciones/{{$propuesta->inspeccion_id}}" role="button">Ver</a>
+                                    
+                                    <a class="btn btn-outline-info btn-sm" href="/inspecciones/{{$propuesta->inspeccion->id}}" role="button">Ver
+                                        <span class="badge text-bg-info">{{ \App\Http\Controllers\PropuestaController::fotosCount($propuesta)}}</span>
+                                    </a>
                                 </td>
                             </tr>
+                            
                             @endforeach
 
                                                         
                         </tbody>
                     </table>
+                    
                 </div>
             </div>
         </div>

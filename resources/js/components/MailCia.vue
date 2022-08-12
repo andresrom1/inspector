@@ -36,7 +36,7 @@ import axios from 'axios'
                     .then(response => {
 
                         this.enviadosCount++;
-                        alert('Email enviado al tomador con éxito');
+                        alert('Inspeccion enviada a la Compañía con éxito');
                         console.log(this.enviados);
                         this.$Progress.finish();
                         

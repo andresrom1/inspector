@@ -41,11 +41,17 @@ class InspeccionRealizada extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = url('/fotos/create/' . $this->propuesta->id);
+        $str="->attach(public_path('/storage/inspecciones/0IFJJbR7LcFs97g6S5vUNVzJS.png'))";
+
+        $url = url('/inspecciones/' . $this->propuesta->inspeccion->id);
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', $url)
-                    ->line('Thank you for using our application!');
+                    ->greeting('Hola!')   
+                    ->line('El asegurado ha enviado las fotos de la inspeccion correspondiente a la propuesta #' .$this->propuesta->id)
+                    ->action('Ver inspeccion', $url)
+                    ->line('Gracias por utilizar'. $str . ' la alpicación de Prudens Seguros')
+                    ->attach(public_path('/storage/inspecciones/0IFJJbR7LcFs97g6S5vUNVzJS.png'))
+                    . $str;
+                    
     }
 
     /**

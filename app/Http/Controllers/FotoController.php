@@ -53,4 +53,12 @@ class FotoController extends Controller
         // TO-DO
         // Cambiar el estado de la propuesta
     }
+
+    public function fotosCount(Inspeccion $inspeccion)
+    {
+        $inspeccion = Inspeccion::where('id', $inspeccion->id)->count();
+
+        return $inspeccion;
+
+    }
 }

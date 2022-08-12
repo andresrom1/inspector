@@ -5298,7 +5298,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$Progress.start();
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('/inspecciones/mailcia/' + this.propuestaId).then(function (response) {
         _this.enviadosCount++;
-        alert('Email enviado al tomador con éxito');
+        alert('Inspeccion enviada a la Compañía con éxito');
         console.log(_this.enviados);
 
         _this.$Progress.finish();

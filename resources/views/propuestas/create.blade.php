@@ -23,7 +23,7 @@
                         <select name ="compania" class="form-control" id="compania">
                             <option value = "Nacion">Nacion</option>
                             <option value = "Vis Red">Vis Red</option>
-                            <option value = "Colon">Colón</option>
+                            <option value = "{{ old('value') ?? 'Colon' }}">Colón</option>
                             <option value = "LPS">LPS</option>                       
                         </select>
                     </div>

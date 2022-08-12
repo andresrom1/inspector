@@ -1,3 +1,4 @@
+/*****************
 composer require laravel/ui
 php artisan ui bootstrap --auth
 npm install && npm run dev
@@ -18,3 +19,6 @@ C:\Users\Andres\inspeccion\resources\js\app.js -> Agregar las siguientes lineas:
         failedColor: 'red',
         thickness: '4px',
       })
+
+
+*/
