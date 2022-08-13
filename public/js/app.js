@@ -5282,13 +5282,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['propuestaId', 'enviados'],
+  props: ['propuestaId', 'enviados', 'cantarchivos'],
   mounted: function mounted() {
     console.log('Component mounted.');
   },
   data: function data() {
     return {
-      enviadosCount: this.enviados
+      enviadosCount: this.enviados,
+      carchivos: this.cantarchivos
     };
   },
   methods: {
@@ -5307,7 +5308,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     badgeText: function badgeText() {
-      return this.enviadosCount;
+      return this.enviadosCount + ' envíos';
+    },
+    disabledButton: function disabledButton() {
+      if (this.carchivos == 0) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 });
@@ -5366,7 +5374,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     badgeText: function badgeText() {
-      return this.enviadosCount;
+      return this.enviadosCount + ' envíos';
     }
   }
 });
@@ -28273,6 +28281,7 @@ var render = function () {
       "button",
       {
         staticClass: "btn btn-outline-success btn-sm",
+        attrs: { disabled: _vm.disabledButton },
         on: { click: _vm.enviarMail },
       },
       [

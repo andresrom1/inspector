@@ -47,7 +47,7 @@ import axios from 'axios'
 
         computed: {
             badgeText(){
-                return (this.enviadosCount);
+                return (this.enviadosCount + ' envíos');
             }
         }
     }

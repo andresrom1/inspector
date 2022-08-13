@@ -53,7 +53,7 @@
                                             {{ $propuesta->tomador->name }} | {{ $propuesta->tomador->email }}
                                         </div>
                                         <div>
-                                            <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
+                                            <a type="button" class="btn btn-outline-primary btn-sm" href="/propuestas/{{ $propuesta->id }}/edit" role="button">Editar</a>
                                         </div>
                                     </div>
                                 </td>
@@ -62,14 +62,17 @@
                                     
                                     <div class="d-flex justify-content-center">        
                                         <mail-tomador class="pe-1" propuesta-id="{{ $propuesta->id }}" enviados="{{ $propuesta->inspeccion->enviados_count }}"></mail-tomador>
-                                        <mail-cia class="pe-1" propuesta-id="{{ $propuesta->id }}" enviados="{{ $propuesta->inspeccion->enviados_cia_count }}"></mail-cia>
+                                        <mail-cia class="pe-1" 
+                                            propuesta-id="{{ $propuesta->id }}" 
+                                            enviados="{{ $propuesta->inspeccion->enviados_cia_count }}" 
+                                            cantArchivos="{{ \App\Http\Controllers\PropuestaController::fotosCount($propuesta)}}"></mail-cia>
             
                                     </div>
                                 </td>
                                 <td>
                                     
                                     <a class="btn btn-outline-info btn-sm" href="/inspecciones/{{$propuesta->inspeccion->id}}" role="button">Ver
-                                        <span class="badge text-bg-info">{{ \App\Http\Controllers\PropuestaController::fotosCount($propuesta)}}</span>
+                                        <span class="badge text-bg-info">{{ \App\Http\Controllers\PropuestaController::fotosCount($propuesta)}} adj.</span>
                                     </a>
                                 </td>
                             </tr>

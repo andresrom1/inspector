@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="btn btn-outline-success btn-sm" @click="enviarMail">A la cía.
+        <button class="btn btn-outline-success btn-sm" @click="enviarMail" v-bind:disabled="disabledButton">A la cía.
             <span class="badge text-bg-success" v-text="badgeText"></span>
         </button>
         
@@ -14,16 +14,19 @@
 import axios from 'axios'
 
     export default {
-        props: ['propuestaId','enviados'],
+        props: ['propuestaId','enviados','cantarchivos'],
 
         mounted() {
             console.log('Component mounted.');
+
             
         },
 
         data: function (){
             return{
                 enviadosCount: this.enviados,
+                carchivos: this.cantarchivos,         
+            
             }
         },
 
@@ -42,15 +45,28 @@ import axios from 'axios'
                         
                     
                     });
-            }
+            },
+
+            
         },
 
         computed: {
             badgeText(){
-                return (this.enviadosCount);
-            }
+                return (this.enviadosCount + ' envíos');
+            },
+
+            disabledButton(){
+                
+                if (this.carchivos==0) {
+                    return true;
+                } else {
+                    return false;
+                }   
+            },
             
-        }
+        },
+
+        
     }
 
 </script>

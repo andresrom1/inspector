@@ -9,23 +9,27 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Crear Propuesta') }}</div>
+                <div class="card-header">{{ __('Editar Propuesta') }}</div>
 
                 
                 <div class="card-body">
 
-                <form action="/propuestas" method="post">
+                <form action="/propuestas/{{ $propuesta->id }}" method="post">
+
+                    @method ('PATCH')   
                     
                     @csrf
-                                      
+
+                    
+
                     <div class="form-group">                        
                         <label for="compania">Compañía | Broker</label>
                         <select name ="compania" class="form-control" id="compania">
                                                       
-                            <option value="Nacion" {{ old('compania') == 'Nacion' ? 'selected="selected"' : '' }}>Nacion</option>
-                            <option value="Vis Red" {{ old('compania') == 'Vis Red' ? 'selected="selected"' : '' }}>Vis Red</option>
-                            <option value="Colon" {{ old('compania') == 'Colon' ? 'selected="selected"' : '' }}>Colon</option>
-                            <option value="LPS" {{ old('compania') == 'LPS' ? 'selected="selected"' : '' }}>LPS</option>
+                            <option value="Nacion" {{ $propuesta->compania == 'Nacion' ? 'selected="selected"' : '' }}>Nacion</option>
+                            <option value="Vis Red" {{ $propuesta->compania == 'Vis Red' ? 'selected="selected"' : '' }}>Vis Red</option>
+                            <option value="Colon" {{$propuesta->compania == 'Colon' ? 'selected="selected"' : '' }}>Colon</option>
+                            <option value="LPS" {{ $propuesta->compania == 'LPS' ? 'selected="selected"' : '' }}>LPS</option>
                         </select>
                     </div>
 
@@ -33,8 +37,8 @@
                         <label for="tipo">Tipo</label>
                         <select name="tipo" class="form-control" id="tipo">
 
-                            <option value="Auto" {{ old('tipo') == 'Auto' ? 'selected="selected"' : '' }}>Auto</option>
-                            <option value="Moto" {{ old('tipo') == 'Moto' ? 'selected="selected"' : '' }}>Moto</option>
+                            <option value="Auto" {{ $propuesta->tipo == 'Auto' ? 'selected="selected"' : '' }}>Auto</option>
+                            <option value="Moto" {{ $propuesta->tipo == 'Moto' ? 'selected="selected"' : '' }}>Moto</option>
                             
                         </select>
                     </div>
@@ -44,7 +48,7 @@
                                 type="text" 
                                 class="form-control" 
                                 id="propuesta" 
-                                value="{{ old('propuesta') }}"
+                                value="{{ $propuesta->numero_propuesta }}"
                                 onkeyup="this.value = this.value.toUpperCase();"
                                 placeholder="Ingrese el número de propuesta">
 
@@ -56,7 +60,7 @@
                                 type="text" 
                                 class="form-control" 
                                 id="dominio" 
-                                value="{{ old('dominio') }}"
+                                value="{{ $propuesta->dominio }}"
                                 onkeyup="this.value = this.value.toUpperCase();"
                                 placeholder="Ingrese el dominio del vehículo">
 
@@ -68,7 +72,7 @@
                         <input  name="tomador" 
                                 type="text" class="form-control" 
                                 id="tomador" 
-                                value="{{ old('tomador') }}"
+                                value="{{ $tomador->name }}"
                                 onkeyup="this.value = this.value.toUpperCase();"
                                 placeholder="Ingrese el nombre del tomador">
 
@@ -79,7 +83,7 @@
                         <label for="email">Email del Tomador</label>
                         <input  name="email" 
                                 type="email" 
-                                value="{{ old('email') }}"
+                                value="{{ $tomador->email }}"
                                 class="form-control" 
                                 id="email" 
                                 placeholder="Ingrese el email del tomador">
@@ -87,8 +91,10 @@
                         @error ('email') <small class="text-danger">{{ $message }}</small>@enderror
                     </div>
 
-                    <div class ="pt-3">
-                        <button type="submit" class="btn btn-primary pt-">Crear Propuesta</button>
+                    <div class ="d-flex justify-content-between pt-3">
+                        <button type="submit" class="btn btn-outline-success">Actualizar Propuesta</button>
+                        <!--<a type="button" class="btn btn-outline-success" href="/propuestas/{{ $propuesta->id }}" method="patch" role="button">Actualizar Propuesta</a>-->
+                        <a type="button" class="btn btn-outline-danger" href="/home" method="patch" role="button">Cancelar</a>
                     </div>
                 </form>
                 </div>

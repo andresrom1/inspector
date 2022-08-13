@@ -25,7 +25,7 @@ class PropuestaController extends Controller
         $data = request()->validate([
             'dominio' => 'required',
             'tomador' => 'required',
-            'email'=> 'required | email',
+            'email'=> 'required|email',
         ]);
 
         
@@ -83,5 +83,42 @@ class PropuestaController extends Controller
         return $p;
     }
 
+    public function edit(Propuesta $propuesta)
+    {
+        $tomador = Tomador::where('id',$propuesta->tomador_id)->firstOrFail();
+        return view('propuestas.edit',compact('propuesta','tomador'));
+    }
+
+    public function update(Propuesta $propuesta)
+    {
+        
+        $data = request()->validate([
+            'compania' => 'required',
+            'tipo' => 'required',
+            'propuesta' => 'required',
+            'dominio' => 'required',
+            'tomador' => 'required',
+            'email' => 'required'
+        ]);
+        
+        
+        //$propuesta = Propuesta::where('id', request('id'))->firstOrFail();
+        
+        $propuesta -> compania = request('compania');
+        $propuesta -> tipo = request('tipo');
+        $propuesta -> dominio = request('dominio');
+        $propuesta -> numero_propuesta = request('propuesta');
+        $propuesta->update();
+        
+
+        $tomador = Tomador::where('id',$propuesta->tomador_id)->firstOrFail(); 
+        $tomador-> name = request('tomador');
+        $tomador-> email = request('email');
+        $tomador->update();
+
+        
+
+        return redirect('/home');
+    }
        
 }

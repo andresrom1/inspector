@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         
-        $propuestas = Propuesta::all();
+        $propuestas = Propuesta::all()->sortByDesc("updated_at");;
         return view('home',compact('propuestas'));
     }
 }
