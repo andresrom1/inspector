@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Foto;
 use App\Models\Inspeccion;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 
@@ -22,8 +23,6 @@ class FotoController extends Controller
 
     public function create(Inspeccion $inspeccion)
     {
-        
-        
         return view('fotos.create',compact('inspeccion'));
     }
 
@@ -34,19 +33,26 @@ class FotoController extends Controller
             'file'=> 'required|image',
         ]);
 
-        $filename = Str::random(25) . "." . $request->file('file')->getClientOriginalExtension();
-        $path = storage_path() . '\app\public\inspecciones/' . $filename;
-        $url = Storage::url('inspecciones/'.$filename);
+        $random = Str::random(25);
+        $filename = $random . "." . $request->file('file')->getClientOriginalExtension();
+        $filename_thumb = $random . "_thumb." . $request->file('file')->getClientOriginalExtension();
+        $path = storage_path() . '\app\public\inspecciones/';
+        $url = Storage::url('inspecciones/');
         $inspeccion_id = $inspeccion->id;
         
         Image::make($request->file('file'))
            ->resize(800, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();})
-            ->save($path);
+            ->save($path . $filename);
+
+        Image::make($request->file('file'))
+            ->fit(250, 250)
+            ->save($path . $filename_thumb);
 
         Foto::create([
-            'url'=>$url,
+            'url'=>$url.$filename,
+            'url_thumb'=>$url.$filename_thumb,
             'inspeccion_id'=>$inspeccion_id,
         ]);
 
@@ -60,5 +66,18 @@ class FotoController extends Controller
 
         return $inspeccion;
 
+    }
+
+    public function destroy(Foto $foto)
+    {
+        
+        File::delete([
+            public_path($foto->url),
+            public_path($foto->url_thumb),
+        ]);
+        
+        $foto->delete();
+
+        return redirect()->back();
     }
 }

@@ -42,6 +42,7 @@ Route::post('/propuesta/{propuesta}/inspeccion',[InspeccionController::class,'cr
 Route::get('/fotos', [FotoController::class, 'index'])->name('fotos.index');
 Route::get('/fotos/create/{inspeccion}', [FotoController::class, 'create'])->name('fotos.create');
 Route::post('/inspecciones/{inspeccion}/fotos', [FotoController::class, 'store'])->name('fotos.store');
+Route::delete('/fotos/{foto}', [FotoController::class,'destroy'])->name('fotos.destroy');
 
 Route::get('/inspecciones/create/{propuesta}',[InspeccionController::class,'create'])->name('inspecciones.create');
 Route::get('/inspecciones/mailcia/{propuesta}',[InspeccionController::class,'enviarMailCia'])->name('inspecciones.enviarMailCia');

@@ -17,6 +17,7 @@ class CreateFotosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('inspeccion_id');
             $table->string('url');
+            $table->string('url_thumb');
             $table->timestamps();
         });
     }
