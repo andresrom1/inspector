@@ -10,21 +10,39 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Fotos de la inspeccion #{{$inspeccion->propuesta->id}} | {{ $inspeccion->propuesta->dominio }} | {{ $inspeccion->propuesta->tomador->name }}</div>
-                        <div class="card-body d-flex flex-wrap">
-                        @foreach($fotos as $foto)
-                            <div class="col-md-3 p-1"><a href="{{ $foto->url }}">
-                                <div class="card"><div class="card-body">
-                                    <img class="card-img-top" src="{{ asset($foto->url_thumb) }}" alt=""></a>
+                    
+                    <div class="card-body d-flex flex-wrap">
+                    
+                    @foreach($fotos as $foto)
+                        <div class="col-md-3 p-1"><a href="{{ $foto->url }}">
+
+                            <div class="card">
+
+                                <div class="card-body">
+
+                                    <img class="card-img-top" src="{{ asset($foto->url_thumb) }}" alt="">
+
                                     <div class="card-footer pt-3">
+
                                         <form action="/fotos/{{ $foto ->id }}" method="post">
+
                                             @method('DELETE')
                                             @csrf
                                             <button class="small btn btn-outline-danger">Eliminar</button>
+
                                         </form>
                                     </div>
-                                </div></div>
+                                </div>
                             </div>
-                        @endforeach
+                        </div>
+                    @endforeach
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-end">
+                            <a href="/home" class="btn btn-success">Volver</a>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

@@ -35,7 +35,7 @@
             <vue-progress-bar></vue-progress-bar>
             <div class="container">
                 
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -51,7 +51,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        @guest
+                        <!--@guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -81,7 +81,7 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @endguest-->
                     </ul>
                 </div>
             </div>
