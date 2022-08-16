@@ -24,16 +24,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Auth::routes();
 
-/*if(Auth::user()){
+if(Auth::user()){
     Auth::routes();
 }else{
     Auth::routes(['register' => false]);
-}*/
+}
 
-Route::get('/fotos/create/{inspeccion}', [FotoController::class, 'create'])->name('fotos.create');
-Route::post('/inspecciones/{inspeccion}/fotos', [FotoController::class, 'store'])->name('fotos.store');
+
 
 
 Route::middleware(['usuario.registrado'])->group(function () {
@@ -65,8 +64,8 @@ Route::middleware(['usuario.registrado'])->group(function () {
 
 });
 
-/*Route::get('/fotos/create/{inspeccion}', [FotoController::class, 'create'])->name('fotos.create');
-Route::post('/inspecciones/{inspeccion}/fotos', [FotoController::class, 'store'])->name('fotos.store');*/
+Route::get('/fotos/create/{inspeccion}', [FotoController::class, 'create'])->name('fotos.create');
+Route::post('/inspecciones/{inspeccion}/fotos', [FotoController::class, 'store'])->name('fotos.store');
 
 
 
