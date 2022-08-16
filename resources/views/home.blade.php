@@ -27,7 +27,7 @@
                                 <th scope="col">Tipo</th>
                                 <th scope="col">Dominio</th>
                                 <th scope="col">Tomador</th>
-                                <!-- <th scope="col">Estado</th>-->
+                                <th scope="col">Creado</th>
                                 <th scope="col">Enviar email <span class="badge text-bg-success">Cant. Envíos</span></th>
                                 <th scope="col">Adjuntos</th>
                                 
@@ -48,16 +48,22 @@
                                 </td>
 
                                 <td>
-                                    <div class="d-flex justify-content-between  pe-3">
+                                    <div class="d-flex justify-content-between pe-3">
                                         <div>
                                             {{ $propuesta->tomador->name }} | {{ $propuesta->tomador->email }}
                                         </div>
                                         <div>
-                                            <a type="button" class="btn btn-outline-primary btn-sm" href="/propuestas/{{ $propuesta->id }}/edit" role="button">Editar</a>
+                                            <a href="/propuestas/{{ $propuesta->id }}/edit"><span style="color:#e61c9b" class='bi bi-pencil-square'></span></a>
+                                        </div>
+                                        <div>
+                                            <a href="/#"><span style="color:#e61c9b" class='bi bi-trash'></span></a>
+                                            
                                         </div>
                                     </div>
                                 </td>
-                                <!-- <td>{{ $propuesta->estado }}</td>-->
+                                <td>
+                                    @inject('dt', 'App\Http\Controllers\PropuestaController')
+                                    {{ $dt->getFecha($propuesta) }}</td>
                                 <td>
                                     
                                     <div class="d-flex justify-content-center">        

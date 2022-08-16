@@ -7,6 +7,7 @@ use App\Models\Tomador;
 use App\Models\Inspeccion;
 use App\Models\Foto;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 use App\Notifications\RealizarInspeccion;
 use Illuminate\Support\Facades\Notification;
@@ -119,6 +120,13 @@ class PropuestaController extends Controller
         
 
         return redirect('/home');
+    }
+
+    public function getFecha(Propuesta $propuesta)
+    {
+        $dt = Carbon::parse($propuesta->created_at);
+
+        return $dt->format('d/m/Y');
     }
        
 }

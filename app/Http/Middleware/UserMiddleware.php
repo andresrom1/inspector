@@ -16,7 +16,7 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user())
+        if(auth()->user()->type >= 100)
         {
             return $next($request);
         }

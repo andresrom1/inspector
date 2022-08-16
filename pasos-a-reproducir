@@ -20,5 +20,7 @@ C:\Users\Andres\inspeccion\resources\js\app.js -> Agregar las siguientes lineas:
         thickness: '4px',
       })
 
+Usuarios Administradores: type >= 100
 
 */
+
