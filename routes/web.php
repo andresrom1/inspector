@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\FotoController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InspeccionController;
 use App\Http\Controllers\PropuestaController;
-
-
+use App\Http\Controllers\FotoController;
+use App\Http\Controllers\UserCreateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,23 +24,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Auth::routes();
 
-/*Route::get('/email/', function () {
-
-    Mail::to('andresrom@gmail.com')->send(new InspeccionRealizada());
-    
-    return new InspeccionRealizada();
-});*/
-
-
-Auth::routes();
+if(Auth::user()){
+    Auth::routes();
+}else{
+    Auth::routes(['register' => false]);
+}
 
 Route::middleware(['usuario.registrado'])->group(function () {
-
-    Route::get('/', function () {
-   
-        return view('welcome');
-    });
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -60,11 +52,16 @@ Route::middleware(['usuario.registrado'])->group(function () {
     Route::post('/propuestas',[PropuestaController::class,'store'])->name('propuestas.store');
     Route::get('/propuestas/{propuesta}/edit',[PropuestaController::class,'edit'])->name('propuestas.edit');
     Route::patch('/propuestas/{propuesta}',[PropuestaController::class,'update'])->name('propuestas.update');
+
+    Route::get('/usuarios/create',[UserCreateController::class,'create'])->name('usuarios.create');
+    Route::post('/usuarios',[UserCreateController::class,'store'])->name('usuarios.store');
     
 
 });
 
 Route::get('/fotos/create/{inspeccion}', [FotoController::class, 'create'])->name('fotos.create');
 Route::post('/inspecciones/{inspeccion}/fotos', [FotoController::class, 'store'])->name('fotos.store');
+
+
 
 

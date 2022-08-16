@@ -44,9 +44,25 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
 
+                    <ul class="navbar-nav">    
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Gestión de usuarios
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-star" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/usuarios/create">
+                                        Crear usuario
+                                    </a>
+
+                                    <!--<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>-->
+                                </div>
+                            </li>
                     </ul>
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
