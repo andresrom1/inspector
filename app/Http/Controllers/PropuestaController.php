@@ -8,6 +8,7 @@ use App\Models\Inspeccion;
 use App\Models\Foto;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
 
 use App\Notifications\RealizarInspeccion;
 use Illuminate\Support\Facades\Notification;
@@ -122,11 +123,33 @@ class PropuestaController extends Controller
         return redirect('/home');
     }
 
+    public function destroy(Propuesta $propuesta)
+    {
+       
+
+        $inspeccion = Inspeccion::where('propuesta_id', $propuesta->id)->firstOrFail(); 
+
+        $fotos = Foto::where('inspeccion_id', $inspeccion->id)->get();
+
+        foreach($fotos as $foto){
+            
+            File::delete([
+                public_path($foto->url),
+                public_path($foto->url_thumb),
+            ]);
+            
+            $foto->delete();
+        }
+
+        $inspeccion->delete();
+        $propuesta->delete();
+
+        return redirect('/home');
+    }
+
     public function getFecha(Propuesta $propuesta)
     {
-        $dt = Carbon::parse($propuesta->created_at);
-
-        return $dt->format('d/m/Y');
+        return Carbon::parse($propuesta->created_at)->format('d/m/Y');
     }
        
 }

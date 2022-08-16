@@ -48,16 +48,29 @@
                                 </td>
 
                                 <td>
-                                    <div class="d-flex justify-content-between pe-3">
-                                        <div>
-                                            {{ $propuesta->tomador->name }} | {{ $propuesta->tomador->email }}
-                                        </div>
-                                        <div>
-                                            <a href="/propuestas/{{ $propuesta->id }}/edit"><span style="color:#e61c9b" class='bi bi-pencil-square'></span></a>
-                                        </div>
-                                        <div>
-                                            <a href="/#"><span style="color:#e61c9b" class='bi bi-trash'></span></a>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex">
+                                            <div>
+                                                {{ $propuesta->tomador->name }} | {{ $propuesta->tomador->email }}
+                                            </div>
                                             
+                                        </div>
+                                        <div class="d-flex">
+                                            <div>
+                                                <a href="/propuestas/{{ $propuesta->id }}/edit"><span style="color:#e61c9b" class='bi bi-pencil-square'></span></a>
+                                            </div>
+                                            <div>
+                                                <form name="borrar" action="/propuestas/{{ $propuesta->id }}" method="post">
+
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    
+                                                    <span style="color:#e61c9b; cursor:pointer;" class='bi bi-trash' onclick="borrar.submit()"></span>
+                                                
+                                                </form>
+                                                
+                                                
+                                            </div>
                                         </div>
                                     </div>
                                 </td>

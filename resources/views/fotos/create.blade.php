@@ -13,7 +13,7 @@
                 <div class="card-body">
                 <div class="d-flex flex-wrap">
                     
-                        <div class="col-2">
+                    <div class="col-2">
                             <form action="/inspecciones/{{$inspeccion->id}}/fotos" style="background-image: url('/storage/img/frente.PNG')" method="POST" class="dropzone" id="dropzone-form">
                             
                         </form>

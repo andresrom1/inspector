@@ -24,13 +24,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Auth::routes();
+Auth::routes();
 
-if(Auth::user()){
+/*if(Auth::user()){
     Auth::routes();
 }else{
     Auth::routes(['register' => false]);
-}
+}*/
+
+Route::get('/fotos/create/{inspeccion}', [FotoController::class, 'create'])->name('fotos.create');
+Route::post('/inspecciones/{inspeccion}/fotos', [FotoController::class, 'store'])->name('fotos.store');
+
 
 Route::middleware(['usuario.registrado'])->group(function () {
 
@@ -39,8 +43,7 @@ Route::middleware(['usuario.registrado'])->group(function () {
     Route::post('/propuesta/{propuesta}/inspeccion',[InspeccionController::class,'create'] );
 
     Route::get('/fotos', [FotoController::class, 'index'])->name('fotos.index');
-    //Route::get('/fotos/create/{inspeccion}', [FotoController::class, 'create'])->name('fotos.create');
-    //Route::post('/inspecciones/{inspeccion}/fotos', [FotoController::class, 'store'])->name('fotos.store');
+
     Route::delete('/fotos/{foto}', [FotoController::class,'destroy'])->name('fotos.destroy');
 
     Route::get('/inspecciones/create/{propuesta}',[InspeccionController::class,'create'])->name('inspecciones.create');
@@ -52,15 +55,18 @@ Route::middleware(['usuario.registrado'])->group(function () {
     Route::post('/propuestas',[PropuestaController::class,'store'])->name('propuestas.store');
     Route::get('/propuestas/{propuesta}/edit',[PropuestaController::class,'edit'])->name('propuestas.edit');
     Route::patch('/propuestas/{propuesta}',[PropuestaController::class,'update'])->name('propuestas.update');
+    Route::delete('/propuestas/{propuesta}',[PropuestaController::class,'destroy'])->name('propuestas.destroy');
+
 
     Route::get('/usuarios/create',[UserCreateController::class,'create'])->name('usuarios.create');
     Route::post('/usuarios',[UserCreateController::class,'store'])->name('usuarios.store');
-    
+
+
 
 });
 
-Route::get('/fotos/create/{inspeccion}', [FotoController::class, 'create'])->name('fotos.create');
-Route::post('/inspecciones/{inspeccion}/fotos', [FotoController::class, 'store'])->name('fotos.store');
+/*Route::get('/fotos/create/{inspeccion}', [FotoController::class, 'create'])->name('fotos.create');
+Route::post('/inspecciones/{inspeccion}/fotos', [FotoController::class, 'store'])->name('fotos.store');*/
 
 
 
