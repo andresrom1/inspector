@@ -4,6 +4,7 @@
 <tr>
 <td class="content-cell" align="center">
 {{ Illuminate\Mail\Markdown::parse($slot) }}
+Texto aqui
 </td>
 </tr>
 </table>

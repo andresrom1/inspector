@@ -9,6 +9,12 @@ npm install && npm run dev
 php artisan storage:link
 npm install --save dropzone
 npm install && npm run dev
+composer require inervention/image
+npm install jquery-ui --save-dev
+
+
+
+
 C:\Users\Andres\inspeccion\resources\js\app.js -> Agregar las siguientes lineas:
 
     import VueProgressBar from 'vue-progressbar'

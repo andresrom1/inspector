@@ -1,7 +1,8 @@
 <template>
     <div>
-        <button class="btn btn-outline-success btn-sm" @click="enviarMail" v-bind:disabled="disabledButton">A la cía.
-            <span class="badge text-bg-success" v-text="badgeText"></span>
+        <button class="btn btn-outline-success btn-sm" @click="enviarMail" v-bind:disabled="disabledButton">
+            <span >A la cía.</span>
+            <span class="badge text-bg-success ps-1" v-text="badgeText"></span>
         </button>
         
         

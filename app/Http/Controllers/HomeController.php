@@ -25,7 +25,12 @@ class HomeController extends Controller
     public function index()
     {
         
-        $propuestas = Propuesta::all()->sortByDesc("updated_at");;
+        $propuestas = Propuesta::orderBy('created_at', 'desc')->get();//paginate(15);
+        return view('home',compact('propuestas'));
+    }
+
+    public function indexSearch(Propuesta $propuestas)
+    {
         return view('home',compact('propuestas'));
     }
 }

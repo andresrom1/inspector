@@ -6,8 +6,8 @@
 
 require('./bootstrap');
 
-
 window.Vue = require('vue').default;
+
 import VueProgressBar from 'vue-progressbar'
 
 /**
@@ -21,6 +21,7 @@ import VueProgressBar from 'vue-progressbar'
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+
 Vue.component('mail-tomador', require('./components/MailTomador.vue').default);
 Vue.component('mail-cia', require('./components/MailCia.vue').default);
 
@@ -29,7 +30,6 @@ Vue.use(VueProgressBar, {
     failedColor: 'red',
     thickness: '4px',
   })
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -40,7 +40,3 @@ Vue.use(VueProgressBar, {
 const app = new Vue({
     el: '#app',
 });
-
-
-
-

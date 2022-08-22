@@ -1,13 +1,27 @@
 @extends('layouts.app')
 
+@section('csssearch')   
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap5.min.css">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    {{ __('Propuestas') }}
-                    <a class="btn btn-outline-primary btn-sm" href="/propuestas/create" role="button">Nueva propuesta</a>
+                <div class="card-header d-flex justify-content-between">
+                    <div class="d-flex align-center">
+                        <div>
+                            <span>{{ __('Propuestas') }}</span>
+                            <a class="btn btn-outline-primary btn-sm" href="/propuestas/create" role="button">Nueva propuesta</a>
+                        </div>
+                    </div>
+
+                   
+                    
                 </div>
 
                 <div class="card-body">
@@ -18,7 +32,7 @@
                         </div>
                     @endif
 
-                    <table class="table table-hover table-bordered table-sm">
+                    <table class="table table-hover table-bordered table-sm" id="propuestas-table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -97,14 +111,33 @@
                             </tr>
                             
                             @endforeach
-
-                                                        
                         </tbody>
+
                     </table>
                     
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center">
+                        
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('jssearch')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> 
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js"></script>
+
+<script>
+    $('#propuestas-table').DataTable({
+        responsive: true,
+        autoWidth: false
+    });
+</script>
 @endsection

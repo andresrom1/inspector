@@ -18,7 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    @yield('csssearch')
+    
     
     <style>
         .dropzone {
@@ -28,6 +29,7 @@
         }
     </style>
     @yield('css')
+    
 </head>
 <body>
     <div id="app">
@@ -37,7 +39,7 @@
             <vue-progress-bar></vue-progress-bar>
             <div class="container">
                 
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -48,21 +50,22 @@
                     <!-- Left Side Of Navbar -->
 
                     <ul class="navbar-nav">    
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Gestión de usuarios
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Gestión de usuarios
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-star" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/usuarios">
+                                    Ver usuarios
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-star" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/usuarios/create">
-                                        Crear usuario
-                                    </a>
-
-                                    <!--<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>-->
-                                </div>
-                            </li>
+                                <a class="dropdown-item" href="/usuarios/create">
+                                    Crear usuarios
+                                </a>
+                                <!--<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>-->
+                            </div>
+                        </li>
                     </ul>
 
 
@@ -112,5 +115,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('js')
+
+    @yield('jssearch')
 </body>
 </html>

@@ -151,5 +151,7 @@ class PropuestaController extends Controller
     {
         return Carbon::parse($propuesta->created_at)->format('d/m/Y');
     }
+
+    
        
 }

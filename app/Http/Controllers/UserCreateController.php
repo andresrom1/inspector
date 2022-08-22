@@ -33,4 +33,17 @@ class UserCreateController extends Controller
         return redirect('/');
        
     }
+    public function index()
+    {
+        $usuarios = User::all();
+        return view('/usuarios.index', compact('usuarios'));
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return redirect()->back();
+
+    }
 }
