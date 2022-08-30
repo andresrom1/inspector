@@ -57,14 +57,14 @@
                                                 <a href="/usuarios/{{ $usuario->id }}/edit"><span style="color:#e61c9b" class='bi bi-pencil-square'></span></a>
                                             </div>
                                             <div>
-                                                <form name="borrar" action="/usuarios/{{ $usuario->id }}" method="post">
+                                                <form name="borrar-{{ $usuario->id }}" id="borrar-{{ $usuario->id }}" action="/usuarios/{{ $usuario->id }}" method="post">
 
                                                     @method('DELETE')
                                                     @csrf
-                                                    
-                                                    <span style="color:#e61c9b; cursor:pointer;" class='bi bi-trash' onclick="borrar.submit()"></span>
-                                                
+                                                    <span style="color:#e61c9b; cursor:pointer;" class='bi bi-trash' onclick="document.forms['borrar-{{ $usuario->id }}'].submit()"></span>
+
                                                 </form>
+                                                
                                             </div>
                                         </div>
                                     </div>

@@ -34,7 +34,7 @@ import axios from 'axios'
         methods:{
             enviarMail() {
                 this.$Progress.start()
-
+                console.log('HIT en mailCia');
                 axios.get('/inspecciones/mailcia/' + this.propuestaId)
                        
                     .then(response => {

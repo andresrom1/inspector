@@ -50,6 +50,7 @@ class InspeccionController extends Controller
         Colón
         LPS
         */
+
         switch ($propuesta->compania) {
             case "Nacion":
                 $mailaddress="andresrom@gmail.com";

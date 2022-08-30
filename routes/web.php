@@ -65,7 +65,7 @@ Route::middleware(['usuario.registrado'])->group(function () {
     Route::get('/usuarios',[UserCreateController::class,'index'])->name('usuarios.create');
     Route::get('/usuarios/create',[UserCreateController::class,'create'])->name('usuarios.create');
     Route::post('/usuarios',[UserCreateController::class,'store'])->name('usuarios.store');
-    Route::post('/usuarios/{usuario}',[UserCreateController::class,'destroy'])->name('usuarios.destroy');
+    Route::delete('/usuarios/{user}',[UserCreateController::class,'destroy'])->name('usuarios.destroy');
     
 });
 

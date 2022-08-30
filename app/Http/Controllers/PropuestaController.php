@@ -30,9 +30,6 @@ class PropuestaController extends Controller
             'email'=> 'required|email',
         ]);
 
-        
-
-       
         $propuesta = new Propuesta();
         
         $tomador2= new Tomador();

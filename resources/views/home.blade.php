@@ -3,8 +3,11 @@
 @section('csssearch')   
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap5.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap5.min.css"> -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/cr-1.5.6/date-1.1.2/fc-4.1.0/fh-3.2.4/kt-2.7.0/r-2.3.0/rg-1.2.0/rr-1.2.8/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.css"/>
+
 @endsection
 
 @section('content')
@@ -74,13 +77,14 @@
                                                 <a href="/propuestas/{{ $propuesta->id }}/edit"><span style="color:#e61c9b" class='bi bi-pencil-square'></span></a>
                                             </div>
                                             <div>
-                                                <form name="borrar" action="/propuestas/{{ $propuesta->id }}" method="post">
+                                                <form name="borrar" id="borrar-{{ $propuesta->id }}" action="/propuestas/{{ $propuesta->id }}" method="post">
 
                                                     @method('DELETE')
                                                     @csrf
+
+                                                    <span style="color:#e61c9b; cursor:pointer;" class='bi bi-trash' onclick="document.forms['borrar-{{ $propuesta->id }}'].submit()"></span>
                                                     
-                                                    <span style="color:#e61c9b; cursor:pointer;" class='bi bi-trash' onclick="borrar.submit()"></span>
-                                                
+
                                                 </form>
                                                 
                                                 
@@ -99,8 +103,8 @@
                                             propuesta-id="{{ $propuesta->id }}" 
                                             enviados="{{ $propuesta->inspeccion->enviados_cia_count }}" 
                                             cantArchivos="{{ \App\Http\Controllers\PropuestaController::fotosCount($propuesta)}}"></mail-cia>
-            
-                                    </div>
+                                       
+                                        </div>
                                 </td>
                                 <td>
                                     
@@ -116,11 +120,7 @@
                     </table>
                     
                 </div>
-                <div class="card-footer">
-                    <div class="d-flex justify-content-center">
-                        
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -129,13 +129,36 @@
 
 @section('jssearch')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
-<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> 
+<!-- <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> 
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js"></script> -->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/cr-1.5.6/date-1.1.2/fc-4.1.0/fh-3.2.4/kt-2.7.0/r-2.3.0/rg-1.2.0/rr-1.2.8/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.js"></script>
+
 
 <script>
     $('#propuestas-table').DataTable({
+        searchPanes:{
+            show: true,
+            cascadePanes: true,
+            initCollapsed: true,
+            orderable: false,
+
+            dtOpts: {
+                searching: true,
+                info: true,
+                
+                
+            },
+            columns: [1,3,6],
+        },
+        
+        dom: 'Plfrtip',
+        
+        
         responsive: true,
         autoWidth: false
     });

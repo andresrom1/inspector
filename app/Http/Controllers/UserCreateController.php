@@ -41,7 +41,11 @@ class UserCreateController extends Controller
 
     public function destroy(User $user)
     {
+        
         $user->delete();
+
+        // $usr = User::findOrFail($user);
+        // $usr->delete();
 
         return redirect()->back();
 
