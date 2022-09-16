@@ -41,7 +41,7 @@ class RealizarInspeccion extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = url('/fotos/create/' . $this->propuesta->id);
+        $url = url('/fotos/create/' . $this->propuesta->inspeccion->id);
         return (new MailMessage)
                     ->line('Gracias por contratar tu seguro en Prudens Seguros.')
                     ->action('Realizar Inspección', $url)

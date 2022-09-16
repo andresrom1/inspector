@@ -1,7 +1,7 @@
 <template>
     <div>
         <button class="btn btn-outline-success btn-sm" @click="enviarMail">
-            <span>Al tomador</span>
+            <span>Clie.</span>
             <span class="badge text-bg-success" v-text="badgeText"></span>
         </button>
         
@@ -18,7 +18,7 @@ import axios from 'axios'
         props: ['propuestaId','enviados'],
 
         mounted() {
-            console.log('Component mounted.');
+            // console.log('Component mounted.');
             
         },
 
@@ -30,7 +30,7 @@ import axios from 'axios'
 
         methods:{
             enviarMail() {
-                console.log('HIT.');
+               
                 this.$Progress.start()
                 
                 axios.get('/inspecciones/create/' + this.propuestaId)
@@ -49,7 +49,7 @@ import axios from 'axios'
 
         computed: {
             badgeText(){
-                return (this.enviadosCount + ' envíos');
+                return (this.enviadosCount);
             }
         }
     }

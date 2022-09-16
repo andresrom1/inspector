@@ -14,6 +14,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            @if (\Session::has('destroy'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ \Session::get('destroy') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="d-flex align-center">
@@ -34,7 +40,6 @@
                             
                         </div>
                     @endif
-
                     <table class="table table-hover table-bordered table-sm" id="propuestas-table">
                         <thead>
                             <tr>
@@ -46,6 +51,7 @@
                                 <th scope="col">Tomador</th>
                                 <th scope="col">Creado</th>
                                 <th scope="col">Enviar email <span class="badge text-bg-success">Cant. Envíos</span></th>
+                                <th scope="col">Estado</th>
                                 <th scope="col">Adjuntos</th>
                                 
                             </tr>
@@ -107,6 +113,19 @@
                                         </div>
                                 </td>
                                 <td>
+                                    <div class="d-flex justify-content-center">
+                                        @if ($propuesta->estado =="enviado")
+                                            <span style="color: red" class='bi bi-person-badge-fill'></span>
+                                        @endif
+                                        @if ($propuesta->estado =="pendiente")
+                                            <span style="color: yellow" class='bi bi-shield-fill-exclamation'></span>
+                                        @endif
+                                        @if ($propuesta->estado =="aceptado")
+                                            <span style="color: green" class='bi bi-patch-check-fill'></span>
+                                        @endif
+                                    </div>
+                                </td>
+                                <td>
                                     
                                     <a class="btn btn-outline-info btn-sm" href="/inspecciones/{{$propuesta->inspeccion->id}}" role="button">Ver
                                         <span class="badge text-bg-info">{{ \App\Http\Controllers\PropuestaController::fotosCount($propuesta)}} adj.</span>
@@ -153,7 +172,7 @@
                 
                 
             },
-            columns: [1,3,6],
+            columns: [1,3,7],
         },
         
         dom: 'Plfrtip',

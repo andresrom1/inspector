@@ -11,6 +11,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            @if (\Session::has('destroy'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ \Session::get('destroy') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="d-flex align-center">

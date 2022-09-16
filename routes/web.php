@@ -25,7 +25,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/test', function () {
+   
+//     return view('test');
+// });
+
 //Auth::routes();
+
+
 
 if(Auth::user()){
     Auth::routes();
@@ -33,7 +40,9 @@ if(Auth::user()){
     Auth::routes(['register' => false]);
 }
 
+
 Route::get('/fotos/create/{inspeccion}', [FotoController::class, 'create'])->name('fotos.create');
+
 Route::post('/inspecciones/{inspeccion}/fotos', [FotoController::class, 'store'])->name('fotos.store');
 
 

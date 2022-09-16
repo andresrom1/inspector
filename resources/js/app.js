@@ -24,7 +24,6 @@ import VueProgressBar from 'vue-progressbar'
 
 Vue.component('mail-tomador', require('./components/MailTomador.vue').default);
 Vue.component('mail-cia', require('./components/MailCia.vue').default);
-Vue.component('borrar-fila', require('./components/BorrarFila.vue').default);
 
 Vue.use(VueProgressBar, {
     color: '#8FFF00',

@@ -141,7 +141,7 @@ class PropuestaController extends Controller
         $inspeccion->delete();
         $propuesta->delete();
 
-        return redirect('/home');
+        return redirect('/home')->with('destroy','Datos Eliminados');
     }
 
     public function getFecha(Propuesta $propuesta)

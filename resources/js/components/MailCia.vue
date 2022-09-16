@@ -1,7 +1,7 @@
 <template>
     <div>
         <button class="btn btn-outline-success btn-sm" @click="enviarMail" v-bind:disabled="disabledButton">
-            <span >A la cía.</span>
+            <span>Cía.</span>
             <span class="badge text-bg-success ps-1" v-text="badgeText"></span>
         </button>
         
@@ -18,7 +18,7 @@ import axios from 'axios'
         props: ['propuestaId','enviados','cantarchivos'],
 
         mounted() {
-            console.log('Component mounted.');
+            // console.log('Component mounted.');
 
             
         },
@@ -34,7 +34,7 @@ import axios from 'axios'
         methods:{
             enviarMail() {
                 this.$Progress.start()
-                console.log('HIT en mailCia');
+                
                 axios.get('/inspecciones/mailcia/' + this.propuestaId)
                        
                     .then(response => {
@@ -53,7 +53,7 @@ import axios from 'axios'
 
         computed: {
             badgeText(){
-                return (this.enviadosCount + ' envíos');
+                return (this.enviadosCount);
             },
 
             disabledButton(){

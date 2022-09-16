@@ -47,7 +47,7 @@ class UserCreateController extends Controller
         // $usr = User::findOrFail($user);
         // $usr->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('destroy','Datos Eliminados');
 
     }
 }
