@@ -37,7 +37,7 @@ Route::get('/', function () {
 if(Auth::user()){
     Auth::routes();
 }else{
-    Auth::routes(['register' => false]);
+    //Auth::routes(['register' => false]);
 }
 
 
