@@ -3,6 +3,8 @@
 /public/storage
 /storage/*.key
 /vendor
+.env
+.env.heroku
 .env.old
 .env.backup
 .phpunit.result.cache
