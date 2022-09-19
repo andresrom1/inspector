@@ -108,7 +108,7 @@
                                         <mail-cia class="pe-1" 
                                             propuesta-id="{{ $propuesta->id }}" 
                                             enviados="{{ $propuesta->inspeccion->enviados_cia_count }}" 
-                                            cantArchivos="{{ \App\Http\Controllers\PropuestaController->fotosCount($propuesta)}}"></mail-cia>
+                                            cantArchivos="{{ \App\Http\Controllers\PropuestaController::fotosCount($propuesta)}}"></mail-cia>
                                        
                                         </div>
                                 </td>

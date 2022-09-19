@@ -73,7 +73,7 @@ class PropuestaController extends Controller
         return redirect('/home');        
     }
 
-    public function fotosCount(Propuesta $propuesta)
+    public static function fotosCount(Propuesta $propuesta)
     {
         $inspeccion = Inspeccion::where('propuesta_id', $propuesta->id)->firstOrFail();        
         
