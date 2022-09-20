@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use \App\Models\Propuesta;
-use \App\Models\Tomador;
+
 
 
 

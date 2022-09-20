@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\InspeccionRealizada as MailInspeccionRealizada;
 use App\Models\Inspeccion;
-use Illuminate\Http\Request;
 use \App\Models\Propuesta;
 use \App\Models\Foto;
 use  \App\Mail\InspeccionRealizada;
@@ -30,7 +28,7 @@ class InspeccionController extends Controller
     {
         $ppta = new Propuesta();
         $ppta = Propuesta::where('id',$propuesta->id)->first();
-        $ppta -> estado = "Enviado";
+        $ppta -> estado = "enviado";
         $ppta->save();
 
         $inspeccion = Inspeccion::where('propuesta_id',$propuesta->id)->first();
@@ -71,6 +69,11 @@ class InspeccionController extends Controller
         $inspeccion = Inspeccion::where('propuesta_id', $propuesta->id)->first();
         $inspeccion->enviados_cia_count++;
         $inspeccion->save();
+
+        $ppta = new Propuesta();
+        $ppta = Propuesta::where('id',$propuesta->id)->first();
+        $ppta -> estado = "pendiente";
+        $ppta->save();
 
         //return(Notification::route('mail', $mailaddress )
             //->notify(new InspeccionRealizada($propuesta)));

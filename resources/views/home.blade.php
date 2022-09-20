@@ -115,13 +115,16 @@
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         @if ($propuesta->estado =="enviado")
-                                            <span style="color: red" class='bi bi-person-badge-fill'></span>
+                                            <!-- <span style="color: red" class='bi bi-person-badge-fill'></span> -->
+                                            <span>enviado</span>
                                         @endif
                                         @if ($propuesta->estado =="pendiente")
-                                            <span style="color: yellow" class='bi bi-shield-fill-exclamation'></span>
+                                            <!-- <span style="color: yellow" class='bi bi-shield-fill-exclamation'></span> -->
+                                            <span>pendiente</span>
                                         @endif
                                         @if ($propuesta->estado =="aceptado")
-                                            <span style="color: green" class='bi bi-patch-check-fill'></span>
+                                            <!-- <span style="color: green" class='bi bi-patch-check-fill'></span> -->
+                                            <span>aceptado</span>
                                         @endif
                                     </div>
                                 </td>
@@ -172,7 +175,7 @@
                 
                 
             },
-            columns: [1,3,7],
+            columns: [1,3,8],
         },
         
         dom: 'Plfrtip',
